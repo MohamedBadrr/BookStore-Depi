@@ -21,7 +21,7 @@ namespace Ecommerce.Areas.Customer.Controllers
         {
             var PageNumber = page ?? 1;
             int PageSize = 8; 
-            var products = _unitOfWork.Product.GetAll().ToPagedList(PageNumber,PageSize);
+            var products = _unitOfWork.Product.GetAll(Include: "Category").ToPagedList(PageNumber,PageSize);
             return View(products);
         }
         [HttpGet]

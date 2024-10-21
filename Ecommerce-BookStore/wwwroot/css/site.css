@@ -1,5 +1,7 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    margin-bottom: 0px !important;
+    padding-bottom:0px !important;
 }
 
 @media (min-width: 768px) {
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 0px !important;
 }
 .app-sidebar {
     position: fixed;
@@ -38,4 +40,9 @@ body {
 /* Optional: Add a transition effect to the main content */
 .app-main {
     transition: margin-left 0.5s ease;
+}
+.hero-header{
+    margin-top:0px !important;
+    padding-top:0px !important;
+    margin:0px;
 }

@@ -1,13 +1,13 @@
 ﻿@model ShoppingCartVM
-<header class="bg-dark py-0">
-    <div class="container px-4 px-lg-5 my-1">
-        <div class="text-center text-white pt-3 pb-3">
-            <h1 class="display-4 fw-bolder">Shopping Cart</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Your Selected Products</p>
+<section style="background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../../../../wwwroot/Templet/img/baner-1.png) !important;" class="pt-2 pb-5">
+<header class=" py-3 border border-secondary rounded-pill w-75 m-auto" style="margin-top:40px !important;background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../../../../wwwroot/Templet/img/baner-1.png) !important;">
+    <div class="container px-4 px-lg-5 ">
+        <div class="text-center d-flex align-items-center justify-content-center text-white ">
+            <h1 class="text-danger fw-bolder" style="color:#81c408 !important;">Your Shopping Cart</h1>
         </div>
-
     </div>
 </header>
+</section>
 
 <section class="h-100 gradient-custom">
     <div class="container py-5">
@@ -15,18 +15,19 @@
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-header py-3">
-                        <h5 class="mb-0">Your items</h5>
+                        <h5 class="mb-0 fw-bold">Your Selected Books</h5>
                     </div>
                     <div class="card-body">
                         <!-- Single item -->
                         @foreach(var item in Model.CartList)
                         {
                             <div class="row">
+
                                 <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                                         <img src="~/@item.Product.Img"
-                                             class="w-100" alt="Blue Jeans Jacket" />
+                                             class="w-75 border border-secondary rounded-pill" style="width:160px !important ; height:160px !important" alt="product-image" />
                                         <a href="#!">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
@@ -34,27 +35,33 @@
                                     <!-- Image -->
                                 </div>
 
-                                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                <div class="col-lg-5 col-md-6 mb-4" >
+                                    <a class="btn btn-danger " style="margin-left:580px !important; margin-bottom:25px !important;" asp-action="Remove" asp-route-cartid="@item.Id">
+                                        X
+                                    </a>
                                     <!-- Data -->
-                                    <p><strong>@item.Product.Name</strong></p>
-                                    <p><strong>Describtion :</strong> @item.Product.Description</p>
-                                    <strong> Price Per One : $@item.Product.Price</strong>
-                
+                                    <div style="  margin-top:-35px !important;">
+                                        <h2 style=" color : #81c408 !important"><strong>@item.Product.Name</strong></h2>
+                                        <h5 class="fw-bold" style=" color : #81c408 !important"> Describtion :</h5><p class=" fw-bold">@item.Product.Description</p>
+                                        <h5><strong style=" color : #81c408 !important"> Price Per One :</strong>  $@item.Product.Price</h5>
+
+                                    </div>
          
                                     <!-- Data -->
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mt-4 mb-lg-0">
                                     <!-- Quantity -->
-                                    <div class="d-flex mt-4" style="max-width: 300px">
+                                    <label class="form-label" for="form1">Quantity</label>
+                                    <div class="d-flex " style="max-width: 300px">
                                         <a data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 me-2"
                                                  asp-action="Minus"    asp-route-cartid = "@item.Id"
                                         > -
                                         </a>
                                         @* onclick="this.parentNode.querySelector('input[type=number]').stepDown()"> *@
-                                        <div data-mdb-input-init class="form-outline">
-                                            <input id="form1" min="0" name="quantity" value="@item.Count" type="number" class="form-control" />
-                                            <label class="form-label" for="form1">Quantity</label>
+                                        <div data-mdb-input-init class="form-outline text-center">
+
+                                            <input id="form1" min="0" name="quantity" value="@item.Count" type="number" class="form-control text-center" />
                                         </div>
 
                                         <a data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 ms-2"
@@ -65,9 +72,7 @@
                                     </div>
                                     <!-- Quantity -->
                                     <!-- Price -->
-                                    <a class="btn btn-danger btn-lg" asp-action="Remove" asp-route-cartid = "@item.Id">
-                                       X
-                                    </a>
+                                  
                                     <!-- Price -->
                                 </div>
                             </div>
