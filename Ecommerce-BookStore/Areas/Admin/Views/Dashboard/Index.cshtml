@@ -1,0 +1,125 @@
+﻿@{
+	ViewBag.CardTitle = "Admin Area";
+	ViewBag.PageTitle = "Dashboard";
+	Layout = "_Dashboard";
+}
+
+<style>
+	.small-box {
+		position: relative;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		transition: all 0.3s ease-in-out;
+	}
+
+		.small-box:hover {
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+			transform: translateY(-5px);
+		}
+
+		.small-box .inner h3 {
+			font-size: 2.5rem;
+			font-weight: bold;
+		}
+
+		.small-box .inner p {
+			font-size: 1.2rem;
+		}
+
+		.small-box .icon i {
+			font-size: 4rem;
+			opacity: 0.7;
+		}
+
+	.small-box-footer {
+		font-weight: bold;
+		font-size: 1.1rem;
+		color: white !important;
+		background-color: rgba(0, 0, 0, 0.1);
+		padding: 10px 0;
+		border-radius: 0 0 10px 10px;
+		transition: background-color 0.3s ease-in-out, transform 0.3s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+		.small-box-footer:hover {
+			background-color: rgba(0, 0, 0, 0.3);
+			transform: translateY(-2px);
+			text-decoration: none;
+			color: white;
+		}
+
+		.small-box-footer i {
+			margin-left: 10px;
+			transition: transform 0.3s ease-in-out;
+		}
+
+		.small-box-footer:hover i {
+			transform: translateX(7px);
+		}
+
+</style>
+
+<div class="row">
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-info">
+			<div class="inner">
+				<h3>@ViewBag.Orders</h3>
+				<p>All Orders</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-bag-shopping"></i>
+			</div>
+			<a href="/Admin/Order/Index" class="small-box-footer">
+				More info <i class="fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-success">
+			<div class="inner">
+				<h3>@ViewBag.ApprovedOrders</h3>
+				<p>Approved Orders</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-person-circle-check"></i>
+			</div>
+			<a href="/Admin/Order/Index" class="small-box-footer">
+				More info <i class="fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-warning">
+			<div class="inner">
+				<h3>@ViewBag.Users</h3>
+				<p>User Registrations</p>
+			</div>
+			<div class="icon">
+				<i class="fa-solid fa-user-nurse"></i>
+			</div>
+			<a href="/Admin/Users/Index" class="small-box-footer">
+				More info <i class="fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-danger">
+			<div class="inner">
+				<h3>@ViewBag.Products</h3>
+				<p>Products</p>
+			</div>
+			<div class="icon">
+				<i class="fa-brands fa-product-hunt"></i>
+			</div>
+			<a href="/Admin/Product/Index" class="small-box-footer">
+				More info <i class="fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+</div>
