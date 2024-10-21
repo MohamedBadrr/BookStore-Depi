@@ -1,0 +1,26 @@
+﻿@model IEnumerable<OrderHeader>
+@{
+    ViewData["Title"] = "My Orders";
+    ViewBag.PageTitle = "My Orders";
+}
+
+<div class="my-4 row w-100">
+    <div class="col-md-12 mt-0">
+        <h2>Your Orders</h2>
+    </div>
+</div>
+
+<table class="table table-hover text-center w-100" id="userOrdersTable">
+    <thead>
+        <tr>
+            <th class="fw-bold text-center">Order ID</th>
+            <th class="fw-bold text-center">Order Date</th>
+            <th class="fw-bold text-center">Order Status</th>
+            <th class="fw-bold text-center">Order Total</th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts {
+    <script src="~/js/userOrders.js"></script>
+}
