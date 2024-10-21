@@ -14,6 +14,5 @@ namespace Ecommerce.Entities.Models
         public string? City { get; set; }
         public string Adress { get; set; }
 
-
     }
 }

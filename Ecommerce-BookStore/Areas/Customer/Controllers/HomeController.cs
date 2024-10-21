@@ -8,6 +8,7 @@ using X.PagedList.Extensions;
 
 namespace Ecommerce.Areas.Customer.Controllers
 {
+    
     [Area("Customer")]
     public class HomeController : Controller
     {
@@ -20,8 +21,15 @@ namespace Ecommerce.Areas.Customer.Controllers
         public IActionResult Index(int? page)
         {
             var PageNumber = page ?? 1;
-            int PageSize = 8; 
-            var products = _unitOfWork.Product.GetAll(Include: "Category").ToPagedList(PageNumber,PageSize);
+            int PageSize = 8;
+            var products = _unitOfWork.Product.GetAll(Include: "Category").ToPagedList(PageNumber, PageSize);
+            return View(products);
+        }
+        public IActionResult AllProducts(int? page)
+        {
+            var PageNumber = page ?? 1;
+            int PageSize = 8;
+            var products = _unitOfWork.Product.GetAll(Include: "Category").ToPagedList(PageNumber, PageSize);
             return View(products);
         }
         [HttpGet]

@@ -149,3 +149,24 @@
 
 })(jQuery);
 
+
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the icon and menu elements
+    var userIcon = document.getElementById('userIcon');
+    var userMenu = document.getElementById('userMenu');
+
+    // Add click event listener to the icon
+    userIcon.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Toggle the display of the <ul> (if it is hidden, show it, otherwise hide it)
+        if (userMenu.style.display === 'none' || userMenu.style.display === '') {
+            userMenu.style.display = 'block';
+        } else {
+            userMenu.style.display = 'none';
+        }
+    });
+});
+
+

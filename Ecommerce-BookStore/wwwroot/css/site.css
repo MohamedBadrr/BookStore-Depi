@@ -46,3 +46,21 @@ body {
     padding-top:0px !important;
     margin:0px;
 }
+#userMenu {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 10px 0;
+}
+
+    #userMenu li {
+        margin: 5px 0;
+    }
+
+        #userMenu li a {
+            text-decoration: none;
+            color: black;
+        }
+
+            #userMenu li a:hover {
+                text-decoration: underline;
+            }

@@ -31,25 +31,16 @@
 </head>
 <body>
     <!-- Navigation-->
-    <div class="container " style="padding-bottom:0px !important;">
+    <div class="container " style="padding-bottom:0px !important; overflow:hidden !important;">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="index.html" class="navbar-brand ourColor1"><h1 class="text-primary display-6"><strong class="ourColor1">Booky</strong></h1></a>
+            <a href="/Customer/Home/Index" class="navbar-brand ourColor1"><h1 class="text-primary display-6"><strong class="ourColor1">Booky</strong></h1></a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav me-auto">
                     <a href="/Customer/Home/Index" class="nav-item nav-link active">Home</a>
-                    <a href="shop.html" class="nav-item nav-link">Shop</a>
-                    <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                            <a href="cart.html" class="dropdown-item">Cart</a>
-                            <a href="chackout.html" class="dropdown-item">Chackout</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>
+                    <a href="/Customer/Home/AllProducts" class="nav-item nav-link">All Books</a>
                 </div>
                 
                 <div class="d-flex m-3 me-0">
@@ -58,32 +49,32 @@
 
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                     {
-                        <form class=" me-3">
+                        <form class=" m-0">
                             <a href="/Customer/Cart/Index">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
-                                @if (httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey) != null)
-                                {
-                                    <span class="position-absolute  bg-secondary rounded-circle
+                                <div style="position:relative">
+                                    <i class="fa fa-shopping-bag fa-2x" style="margin-top:-15px !important;"></i>
+                                    @if (httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey) != null)
+                                    {
+                                        <span class="   bg-secondary rounded-circle
                     d-flex align-items-center
-                    justify-content-center text-dark px-1" style="top:55px; right:188px; height: 20px; min-width: 20px;">
-                                        @httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
-                                    </span>
-                                }
-                                else
-                                {
-                                    <span class="position-absolute bg-secondary rounded-circle
+                    justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px;  top:25px ; left:4px !important;">
+                                            @httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="  bg-secondary rounded-circle
                     d-flex align-items-center
-                justify-content-center text-dark px-1" style="top:55px; right:188px; height: 20px; min-width: 20px;">
-                                        0
-                                    </span>
-                                }
+                justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px; top:20px !important; left:4px !important;">
+                                            0
+                                        </span>
+                                    }
+                                </div>
 
                             </a>
                         </form>
                     }
-                    <a href="#" class="my-auto">
-                        <i class="fas fa-user fa-2x"></i>
-                    </a>
+
                 </div>
                 <partial name="_LoginPartial" />
             </div>
