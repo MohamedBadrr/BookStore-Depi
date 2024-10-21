@@ -1,0 +1,52 @@
+﻿@model ProductVM
+
+@{
+    Layout = "_Dashboard";  
+    ViewBag.PageTitle = "Product Management";
+    ViewBag.CardTitle = "Edit Product";
+}
+<div class="row">
+    <div class="col-md-7">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="product.Img" />
+            <input type="hidden" asp-for="@Model.product.Id" />
+            <div class="form-group my-3">
+                <label asp-for="product.Name" class="form-label fw-bold"></label>
+                <input asp-for="product.Name" class="form-control" />
+                <span asp-validation-for="product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 my-3">
+                <label asp-for="product.Description" class="form-label fw-bold"></label>
+                <textarea asp-for="product.Description" class="form-control"></textarea>
+                <span asp-validation-for="product.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="product.Price" class="form-label fw-bold"></label>
+                <input asp-for="product.Price" class="form-control" />
+                <span asp-validation-for="product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="product.CategoryId" class="form-label fw-bold"></label>
+                <select asp-for="product.CategoryId" asp-items="Model.categoryList" class="form-control">
+                    <option disabled selected> --- Select Category --- </option>
+                </select>
+
+            </div>
+            <div class="form-group mb-3 my-3">
+                <label asp-for="product.Img" class="form-label fw-bold"></label>
+                <input type="file" id="imgfile" name="file" class="form-control" />
+                <span asp-validation-for="product.Img" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary mx-2">Save</button>
+                <a asp-action="Index" asp-controller="Product" class="btn btn-secondary">Back To List</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center">
+            <img src="~/@Model.product.Img" class="w-50" />
+        </div>
+    </div>
+</div>

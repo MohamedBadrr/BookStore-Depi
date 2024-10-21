@@ -1,0 +1,51 @@
+﻿ @model IEnumerable<Category>   
+@{
+    ViewBag.PageTitle = "Category Managment";
+    ViewBag.CardTitle = "All Categories";
+    Layout = "_Dashboard";
+}
+
+
+<div class="my-4 row w-100" >
+    
+    <div class="col-md-2 mt-0" ><a asp-action="Create" class="btn btn-primary fw-bold">Add New Category</a></div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.Name)</t>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.Description)</th>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.CreatedTime)</th>
+            <th class="fw-bold text-center">Update</th>
+            <th class="fw-bold text-center">Delete</th>
+            <th class="fw-bold text-center">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@Html.DisplayFor(M => item.Name)</td>
+                <td class="text-center">@Html.DisplayFor(M => item.Description)</td>
+                <td class="text-center">@Html.DisplayFor(M => item.CreatedTime)</td>
+                <td class="text-center">
+                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                        <i class="bi bi-archive-fill"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

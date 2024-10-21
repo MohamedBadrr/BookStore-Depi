@@ -1,0 +1,28 @@
+﻿@model IEnumerable<OrderHeader>
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.PageTitle = "Orders Managment";
+    ViewBag.CardTitle = "All of Orders";
+    Layout = "_Dashboard";
+}
+
+<div class="my-4 row w-100">
+
+    <div class="col-md-2 mt-0"><a asp-action="Create" class="btn btn-primary fw-bold">Add New Product</a></div>
+</div>
+<table class="table table-hover text-center w-100" id="mytable">
+    <thead>
+        <tr>
+            <th class="fw-bold text-center">id</th>
+            <th class="fw-bold text-center">Name</th>
+            <th class="fw-bold text-center">Phone</th>
+            <th class="fw-bold text-center">Email</th>
+            <th class="fw-bold text-center">Order Status</th>
+            <th class="fw-bold text-center">Order Total</th>
+            <th class="fw-bold text-center">Action</th>
+        </tr> 
+    </thead>
+</table>
+@section Scripts {
+    <script src="~/js/orders.js"></script>
+} 

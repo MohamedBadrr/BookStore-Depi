@@ -1,0 +1,60 @@
+﻿@model ProductVM
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Product Managment";
+    ViewBag.CardTitle = "Add New Product";
+}
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="row">
+    <div class="col-md-7">
+    <div class="form-group my-3">
+        <label asp-for="product.Name" class="form-label fw-bold"></label>
+        <input asp-for="product.Name" class="form-control" />
+        <span asp-validation-for="product.Name" class="text-danger"></span> 
+    </div>
+    <div class="form-group mb-3 my-3">
+        <label asp-for="product.Description" class="form-label fw-bold"></label>
+        <textarea asp-for="product.Description" class="form-control"></textarea>
+        <span asp-validation-for="product.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group my-3">
+        <label asp-for="product.Price" class="form-label fw-bold"></label>
+        <input asp-for="product.Price" class="form-control" />
+        <span asp-validation-for="product.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group my-3">
+        <label asp-for="product.CategoryId" class="form-label fw-bold"></label>
+        <select asp-for="product.CategoryId" asp-items="Model.categoryList" class="form-control">
+            <option disabled selected> --- Select Category --- </option>
+        </select>
+       
+    </div>
+    <div class="form-group mb-3 my-3">
+        <label asp-for="product.Img" class="form-label fw-bold"></label>
+        <input type="file" id="imgfile" name="file" class="form-control" onchange="fillimg(event);"/>
+        <span asp-validation-for="product.Img" class="text-danger"></span>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary mx-2">Save</button>
+        <a asp-action="Index" asp-controller="Category" class="btn btn-secondary">Back To List</a>
+    </div>
+    </div>
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center">
+            <img id="imgPreview" src="~/product.Img" class="w-50"/>
+        </div> 
+    </div>
+</div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        var fillimg = function(event){
+            var imageHolder = document.getElementById("imgPreview");
+            imageHolder.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+}  

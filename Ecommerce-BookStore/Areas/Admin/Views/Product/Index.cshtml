@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Product Management";
+    ViewBag.CardTitle = "All of Products";
+}
+
+<div class="my-4 row w-100">
+
+    <div class="col-md-2 mt-0"><a asp-action="Create" class="btn btn-primary fw-bold">Add New Product</a></div>
+</div>
+<table class="table table-hover text-center w-100" id="mytable">
+    <thead>
+        <tr>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(P => P.Name)</t>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(P => P.Description)</th>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(P => P.Price)</th>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(P => P.Category)</th>
+            <th class="fw-bold text-center">Update</th>
+            <th class="fw-bold text-center">Delete</th>
+            <th class="fw-bold text-center">Details</th>
+        </tr>
+    </thead>
+</table>
+
+ @section Scripts{
+    <script src="~/js/products.js"></script>
+ } 

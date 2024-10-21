@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewBag.PageTitle = "Users Managment";
+    ViewBag.CardTitle = "All Users";
+    Layout = "_Dashboard";
+}
+
+
+<div class="my-4 row w-100">
+
+    <div class="col-md-2 mt-0"><a href="/Identity/Account/Register" class="btn btn-primary btn-larg">Add New User</a></div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.Name)</t>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.Age)</th>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.Email)</th>
+            <th class="fw-bold text-center">@Html.DisplayNameFor(c => c.PhoneNumber)</th>
+            <th class="fw-bold text-center">Lock/Unlock</th>
+            <th class="fw-bold text-center">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@Html.DisplayFor(M => item.Name)</td>
+                <td class="text-center">@Html.DisplayFor(M => item.Age)</td>
+                <td class="text-center">@Html.DisplayFor(M => item.Email)</td>
+                <td class="text-center">@Html.DisplayFor(M => item.PhoneNumber)</td>
+                <td class="text-center">
+                    @if(item.LockoutEnd == null | item.LockoutEnd < DateTime.Now){
+                        <a asp-action="LockUnLock" asp-route-id="@item.Id" class="btn btn-success">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="LockUnLock" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fa-solid fa-lock"></i>
+                        </a>
+                    }
+                </td>
+                <td class="text-center">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                        <i class="bi bi-archive-fill"></i>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
