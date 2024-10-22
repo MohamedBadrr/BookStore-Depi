@@ -1,6 +1,7 @@
 ﻿using Ecommerce.DataAccess.Data;
 using Ecommerce.Entities.Models;
 using Ecommerce.Entities.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,10 @@ namespace Ecommerce.DataAccess.Repositories
                 updatedProcuct.Img = product.Img;
                 updatedProcuct.CategoryId = product.CategoryId;
             }
+        }
+        public IQueryable<Product> SearchByName(string name)
+        {
+            return _dbcontext.Products.Where(p => p.Name.ToLower().Contains(name));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Ecommerce.Entities.Models;
+﻿
+using Ecommerce.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Ecommerce.Entities.Repositories
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        void Update(Product product);   
+        void Update(Product product);
+        public IQueryable<Product> SearchByName(string name);
+
     }
 }

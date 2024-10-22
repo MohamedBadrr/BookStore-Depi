@@ -1,0 +1,72 @@
+﻿@model IEnumerable<OrderHeader>
+@{
+    ViewData["Title"] = "My Orders";
+    ViewBag.PageTitle = "My Orders";
+}
+<section style="background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../../../../wwwroot/Templet/img/baner-1.png) !important;" class="pt-0 pb-3">
+    <header class=" py-3 border border-secondary rounded-pill w-75 m-auto" style="background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../../../../wwwroot/Templet/img/baner-1.png) !important;">
+        <div class="container px-4 px-lg-5 ">
+            <div class="text-center d-flex align-items-center justify-content-center text-white ">
+                <h1 class="text-danger fw-bolder" style="color:#81c408 !important;">My Order History</h1>
+            </div>
+        </div>
+    </header>
+</section>
+<div class="container pb-4">
+    <div class="my-4 row w-100">
+
+
+        <table class="table table-stripedtable table-striped table-hover text-center w-100" id="userOrdersTable">
+        <thead>
+            <tr>
+                <th class="fw-bold text-center text-dark fs-5">Order ID</th>
+                <th class="fw-bold text-center text-dark fs-5">Order Date</th>
+                <th class="fw-bold text-center text-dark fs-5">Order Status</th>
+                <th class="fw-bold text-center text-dark fs-5">Order Total</th>
+                <th class="fw-bold text-center text-dark fs-5">Cancel</th>
+                <th class="fw-bold text-center text-dark fs-5">Complete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.OrderDate</td>
+                    <td>
+                        @item.OrderStatus
+                    </td>
+
+                    
+                    <td>@item.TotalPrice</td>
+                    <td class="">
+                            @if (item.OrderStatus != "Cancelled" && item.OrderStatus != "Shipped" && item.OrderStatus != "Proccessing")
+                             {
+                            <form asp-action="CancelOrder">
+                                <input hidden value="@item.Id" name="id" />
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <p class="mt-1 text-success fw-bold">Shipped Done Successfully</p>
+                            }
+
+                    </td>
+                    <td class="">
+                            @if (item.OrderStatus != "Cancelled" && item.OrderStatus != "Approve" && item.OrderStatus != "Shipped" && item.OrderStatus != "Proccessing")
+                        {
+                            <form asp-action="CompleteOrder">
+                                <input hidden value="@item.Id" name="id" />
+                                <button type="submit" class="btn btn-warning">Complete</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+
+

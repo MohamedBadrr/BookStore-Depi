@@ -32,6 +32,7 @@ namespace Ecommerce
             builder.Services.Configure<StripeUtilite>(builder.Configuration.GetSection("stripe"));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddSingleton<IEmailSender, EmailSender>();
+            
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession();

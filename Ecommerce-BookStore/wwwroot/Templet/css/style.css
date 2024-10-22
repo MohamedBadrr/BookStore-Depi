@@ -179,11 +179,10 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../Images/header1.jfif);
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.9)), url(../Images/background.jpg) !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-   
 }
 
 .carousel-item {
@@ -221,7 +220,7 @@
 
 .page-header {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../Images/Books.jfif) !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,7 +1,21 @@
-﻿@using Microsoft.AspNetCore.Http
+﻿@using Ecommerce.Entities.Interfaces
+@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @using Uitilites
+  @inject IUnitOfWork _UnitOfwork; 
+    
+@{
+    // var userId = _UserManager.GetUserId(User);
+    // if ((ClaimsIdentity)User.Identity !=null )
+    // {
+    //     var claimsIdentity = (ClaimsIdentity)User.Identity;
+    //     var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+    //     userId = claim.Value.ToString();
+            // }
+}
+@{var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);}
 
-@inject IHttpContextAccessor httpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +43,10 @@
     <link href="~/templet/css/style.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
-<body>
+<body style="padding-bottom:0px !important;margin-bottom:0px !important ;">
     <!-- Navigation-->
-    <div class="container " style="padding-bottom:0px !important; overflow:hidden !important;">
-        <nav class="navbar navbar-light bg-white navbar-expand-xl">
+    <div class="container " style="padding-bottom:0px !important;margin-bottom:0px !important ; overflow:hidden !important;">
+        <nav class="navbar navbar-light bg-white navbar-expand-xl" style="margin-bottom:-10px !important;">
             <a href="/Customer/Home/Index" class="navbar-brand ourColor1"><h1 class="text-primary display-6"><strong class="ourColor1">Booky</strong></h1></a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
@@ -41,6 +55,14 @@
                 <div class="navbar-nav me-auto">
                     <a href="/Customer/Home/Index" class="nav-item nav-link active">Home</a>
                     <a href="/Customer/Home/AllProducts" class="nav-item nav-link">All Books</a>
+                     @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                    {
+                        <a href="/Customer/UserOrder/GetUserOrders" class="nav-item nav-link">My Orders</a>
+                    } 
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a href="/Admin/Dashboard/Index" class="nav-item nav-link">DashBoard</a>
+                    }
                 </div>
                 
                 <div class="d-flex m-3 me-0">
@@ -53,24 +75,23 @@
                             <a href="/Customer/Cart/Index">
                                 <div style="position:relative">
                                     <i class="fa fa-shopping-bag fa-2x" style="margin-top:-15px !important;"></i>
-                                    @if (httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey) != null)
+                                    @if (userId != null)
                                     {
                                         <span class="   bg-secondary rounded-circle
                     d-flex align-items-center
-                    justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px;  top:25px ; left:4px !important;">
-                                            @httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
+                                justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px;  top:10px ; left:4px !important;">
+                                            @_UnitOfwork.ShoppingCart.GetAll(x => x.ApplicationUserId == userId).Count()
                                         </span>
                                     }
                                     else
                                     {
                                         <span class="  bg-secondary rounded-circle
-                    d-flex align-items-center
-                justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px; top:20px !important; left:4px !important;">
+                                     d-flex align-items-center
+                                    justify-content-center text-dark px-1" style="position:absolute;  height: 20px; min-width: 20px; top:10px !important; left:4px !important;">
                                             0
                                         </span>
-                                    }
+                                    }  
                                 </div>
-
                             </a>
                         </form>
                     }
@@ -161,22 +182,6 @@
                         <p>Payment Accepted</p>
                         <img src="img/payment.png" class="img-fluid" alt="">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid copyright bg-dark py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Booky </a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">Depi Team</a>
                 </div>
             </div>
         </div>

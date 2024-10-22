@@ -9,21 +9,16 @@
     }
 }
 
-<div class="container d-flex align-items-center justify-content-center" style="height:85vh !important;">
+<div class="container " style="height:85vh !important;">
     <div class="row d-flex align-items-center justify-content-center">
         <h1>Manage your account</h1>
-
-        <div>
             <h2>Change your account settings</h2>
             <hr />
-            <div class="row col-md-12">
-                <div class="col-md-3">
+        <div class="col-md-1  mt-4">
                     <partial name="_ManageNav" />
-                </div>
-                <div class="col-md-9">
+        </div>
+        <div class="col-md-11  mt-4">
                     @RenderBody()
-                </div>
-            </div>
         </div>
 
     </div>
