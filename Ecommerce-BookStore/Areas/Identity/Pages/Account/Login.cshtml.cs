@@ -117,7 +117,7 @@ namespace Ecommerce.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
                     if (User.IsInRole("Admin"))
                     {
-                        return Redirect("/Admin/Product/");
+                        return Redirect("/Admin/Dashboard/");
                     }
                     if (User.IsInRole("Customer"))
                     {

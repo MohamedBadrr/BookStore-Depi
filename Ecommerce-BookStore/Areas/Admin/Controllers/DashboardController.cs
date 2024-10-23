@@ -17,7 +17,7 @@ namespace Ecommerce.Areas.Admin.Controllers
         public IActionResult Index()
         {
             ViewBag.Orders = _unitOfWork.OrderHeader.GetAll().Count();
-            ViewBag.ApprovedOrders = _unitOfWork.OrderHeader.GetAll(x => x.OrderStatus == SD.Approve).Count();
+            ViewBag.Categories = _unitOfWork.Category.GetAll().Count();
             ViewBag.Users = _unitOfWork.ApplicationUser.GetAll().Count();
             ViewBag.Products = _unitOfWork.Product.GetAll().Count();
 
