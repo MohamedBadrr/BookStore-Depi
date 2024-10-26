@@ -1,4 +1,4 @@
-Introduction
+✍ Project Overview:
 -
 Welcome to Booky, a user-friendly bookstore website aimed at simplifying the way users discover and purchase books across various genres, including Programming, Fantasy, Mystery, Historical Fiction, and Science.
 Booky provides personalized recommendations, showcasing popular and visually appealing books to users.
@@ -6,7 +6,7 @@ Booky has two primary user roles:
 Customer: Engages in browsing, searching, and purchasing books.
 Admin: Manages website operations and content.
 
-
+ Main User Roles:
 Customer Role
 Booky's customer interface offers users the ability to:
 -
