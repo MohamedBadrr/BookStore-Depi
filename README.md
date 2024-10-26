@@ -17,8 +17,7 @@ Booky has two primary user roles:
  - Manage Account: Update personal account details and securely log out upon finishing shopping.
 
 
-🛠️ Admin Role
-Admins play a key role in maintaining and overseeing the Booky platform by managing categories, products, users, and orders:
+# 🛠️ Admin Role : Admins play a key role in maintaining and overseeing the Booky platform by managing categories, products, users, and orders:
 
 * Categories Management:
 Add, Update, View, and Delete Categories: Allows for new book categories and modifications to existing ones.
